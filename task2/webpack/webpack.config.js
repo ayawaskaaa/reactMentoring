@@ -24,5 +24,7 @@ module.exports = {
             template: "./src/index.html",
             filename: "./index.html"
         })
-    ]
+    ],
+    devtool: process.env.development ? 'eval-cheap-module-source-map' : 'source-map',
+
 };
