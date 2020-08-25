@@ -4,13 +4,14 @@ import SortPanel from "./SortPanel";
 
 function FilterBar() {
     function retrieveCategories() {
-
+        return ["ALL", "DOCUMENTARY", "COMEDY", "HORROR", "CRIME"]
     }
 
     return (
         <>
             <Categories categories={retrieveCategories()}/>
-            <SortPanel sortOptions={[]} onSortOptionChange={()=>{}}/>
+            <SortPanel onSortOptionChange={() => {
+            }}/>
         </>
     );
 }

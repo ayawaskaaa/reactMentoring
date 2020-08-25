@@ -2,14 +2,11 @@ import React from "react";
 import SortDropDown from "./SortDropDown";
 
 interface SortPanelProps {
-    sortOptions: any;
     onSortOptionChange(): void;
 }
 
 function SortPanel(props: SortPanelProps) {
-    function retrieveSortOptions() {
-
-    }
+    const SORT_OPTIONS = ["RELEASE DATE", "RATING"]
 
     function onSortOptionChange() {
 
@@ -18,7 +15,7 @@ function SortPanel(props: SortPanelProps) {
     return (
         <>
             <span>SORT BY</span>
-            <SortDropDown onSortOptionChange={onSortOptionChange} sortOptions={retrieveSortOptions()}/>
+            <SortDropDown onSortOptionChange={onSortOptionChange} sortOptions={SORT_OPTIONS}/>
         </>
     );
 }

@@ -1,13 +1,16 @@
 import React from "react";
+import {useHeaderStyles} from "./headerStyles";
 
 interface SearchMovieButtonProps {
     onSearchButtonClick(): void
 }
 
 function SearchMovieButton(props: SearchMovieButtonProps) {
+    const headerClasses = useHeaderStyles();
+
     return (
         <>
-            <button></button>
+            <button className={headerClasses.searchMovieButton}>SEARCH</button>
         </>
     );
 }

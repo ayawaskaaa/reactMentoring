@@ -1,14 +1,14 @@
 import React from 'react';
 import TopBar from "./TopBar";
-import SearchForm from "./SearchForm";
 import {useHeaderStyles} from "./headerStyles";
+import SearchMovieContainer from "./SearchMovieContainer";
 
 function Header() {
     const headerClasses = useHeaderStyles();
     return (
         <div className={headerClasses.header}>
             <TopBar/>
-            <SearchForm/>
+            <SearchMovieContainer/>
         </div>
     );
 }
