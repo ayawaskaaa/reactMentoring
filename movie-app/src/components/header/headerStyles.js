@@ -25,7 +25,8 @@ export const useHeaderStyles = createUseStyles({
         justifyContent: "space-between"
     },
     topBarLeft: {
-        marginLeft: '50px'
+        marginLeft: '50px',
+        height: '50px'
     },
     topBarRight: {
         marginRight: '50px'

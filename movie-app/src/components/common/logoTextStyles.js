@@ -3,9 +3,7 @@ import {createUseStyles} from "react-jss";
 const fontSize = '17px'
 const fontColor = '#F65261';
 const logoTextStyles = createUseStyles({
-    logoContainer: {
-        height: '50px'
-    },
+
     logoTextBeginning: {
         color: fontColor,
         fontSize: fontSize,
