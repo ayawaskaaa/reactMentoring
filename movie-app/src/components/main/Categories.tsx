@@ -1,15 +1,18 @@
 import React from "react";
 import Category from "./Category";
+import {useMainBlockStyles} from "./mainBlockStyles";
 
 interface CategoriesProps {
     categories: any
 }
 
 function Categories(props: CategoriesProps) {
+    const mainBlockClasses = useMainBlockStyles();
+
     return (
-        <>
-            ${props.categories.map(categoryName => (<Category categoryName={categoryName}/>))}
-        </>
+        <div className={mainBlockClasses.categoryContainer}>
+            {props.categories.map(categoryName => (<Category categoryName={categoryName}/>))}
+        </div>
     );
 }
 

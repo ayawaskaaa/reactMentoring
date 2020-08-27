@@ -1,13 +1,16 @@
 import React from "react";
+import {useMainBlockStyles} from "./mainBlockStyles";
 
 interface CategoryProps {
     categoryName: string
 }
 
 function Category(props: CategoryProps) {
+    const mainBlockClasses = useMainBlockStyles();
+
     return (
         <>
-            <span>${props.categoryName}</span>
+            <button className={mainBlockClasses.category}>{props.categoryName}</button>
         </>
     );
 }

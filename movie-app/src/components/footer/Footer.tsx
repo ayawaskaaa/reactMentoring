@@ -6,7 +6,7 @@ function Footer() {
     const footerClasses = useFooterStyles();
     return (
         <div className={footerClasses.footer}>
-            <LogoText />
+            <LogoText/>
         </div>
     );
 }

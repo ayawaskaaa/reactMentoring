@@ -9,9 +9,9 @@ interface GalleryContainerProps {
 function GalleryContainer(props: GalleryContainerProps) {
     return (
         <>
-            ${props.movies.map((movieInfo: MovieInfo) =>
-            (<Card {...movieInfo}/>)
-        )}
+            {props.movies.map((movieInfo: MovieInfo) =>
+                (<Card {...movieInfo}/>)
+            )}
         </>
     );
 }

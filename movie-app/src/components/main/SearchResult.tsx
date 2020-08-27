@@ -7,7 +7,7 @@ interface SearchResultProps {
 function SearchResult(props: SearchResultProps) {
     return (
         <>
-            <span>movies found ${props.moviesAmount}</span>
+            <span>movies found {props.moviesAmount}</span>
         </>
     );
 }
