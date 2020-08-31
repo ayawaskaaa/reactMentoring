@@ -1,45 +1,19 @@
 import {createUseStyles} from 'react-jss'
-import dropdownArrow from '../../images/dropdownArrow.svg';
 
 export const useMainBlockStyles = createUseStyles({
     mainBlock: {
         width: '1200px',
         minHeight: '400px',
-        backgroundColor: "#232323"
-    },
-    category: {
-        background: 'none',
-        border: 'none',
-        padding: '0',
-        cursor: 'pointer',
-        outline: 'none',
-        fontSize: '17px',
-        fontWeight: '100',
-        fontFamily: 'Verdana, Arial, Helvetica, sans-serif',
-        color: 'white'
-    },
-    categoryContainer: {
-        width: '500px',
-        height: '60px',
+        backgroundColor: "#232323",
         display: "flex",
-        justifyContent: "space-around",
-        alignItems: "center",
-        marginLeft: '30px'
+        justifyContent: "center"
     },
-    filterBar: {
+    mainBlockContainer: {
+        width: '1090px',
+        height: '100%',
         display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between"
-    },
-    sortOption: {
-        fontWeight: '100',
-        fontFamily: 'Verdana, Arial, Helvetica, sans-serif',
-        color: 'white',
-        background: 'none',
-        border: 'none',
-        padding: '0',
-        cursor: 'pointer',
-        outline: 'none',
+        flexDirection: "column",
+        justifyContent: "space-between",
     },
     textStyle: {
         fontWeight: '100',
@@ -48,35 +22,30 @@ export const useMainBlockStyles = createUseStyles({
         fontSize: '17px',
 
     },
-    sortOptionContainerInactive: {
-        display: 'none'
+    searchResultNumber: {
+        fontSize: '17px',
+        fontWeight: '100',
+        fontFamily: 'Verdana, Arial, Helvetica, sans-serif',
+        color: 'white',
+        marginRight: '3px'
     },
-    sortPanel: {
-        width: '300px',
-        height: '60px',
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-around",
-        alignItems: "center"
+    searchResultText: {
+        fontSize: '15px',
+        fontWeight: '100',
+        fontFamily: 'Verdana, Arial, Helvetica, sans-serif',
+        color: 'white'
     },
-    expandButtonContainer: {
-        width: '60px',
+    searchResultContainer: {
         height: '60px',
         display: "flex",
         alignItems: "center",
-        justifyContent: "flex-start"
     },
-    expandButton: {
-        width: '10px',
-        height: '10px',
-        background: 'none',
-        color: "red",
-        border: 'none',
-        padding: '0',
-        cursor: 'pointer',
-        outline: 'none',
-        backgroundImage: `url(${dropdownArrow})`,
-        backgroundSize: '10px'
+    galleryContainer: {
+        display: "flex",
+        justifyContent: "space-between",
+        flexDirection: "row",
+        alignItems: "center",
+        flexWrap: "wrap"
     }
 
 });

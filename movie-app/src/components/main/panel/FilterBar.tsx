@@ -1,17 +1,17 @@
 import React from "react";
 import Categories from "./Categories";
 import SortPanel from "./SortPanel";
-import {useMainBlockStyles} from "./mainBlockStyles";
+import {usePanelStyles} from "./panelStyles";
 
 function FilterBar() {
-    const mainBlockClasses = useMainBlockStyles();
+    const panelClasses = usePanelStyles();
 
     function retrieveCategories() {
         return ["ALL", "DOCUMENTARY", "COMEDY", "HORROR", "CRIME"]
     }
 
     return (
-        <div className={mainBlockClasses.filterBar}>
+        <div className={panelClasses.filterBar}>
             <Categories categories={retrieveCategories()}/>
             <SortPanel onSortOptionChange={() => {
             }}/>

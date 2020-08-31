@@ -1,7 +1,7 @@
 import React from "react";
 import SortDropDown from "./SortDropDown";
-import {useMainBlockStyles} from "./mainBlockStyles";
 import ExpandButton from "./ExpandButton";
+import {usePanelStyles} from "./panelStyles";
 
 interface SortPanelProps {
     onSortOptionChange(): void;
@@ -10,17 +10,17 @@ interface SortPanelProps {
 function SortPanel(props: SortPanelProps) {
     const SORT_OPTIONS = ["RELEASE DATE", "RATING"]
     let selectedOption = 'RELEASE DATE';
-    const mainBlockClasses = useMainBlockStyles();
+    const panelClasses = usePanelStyles();
 
     function onSortOptionChange() {
 
     }
 
     return (
-        <div className={mainBlockClasses.sortPanel}>
-            <span className={mainBlockClasses.textStyle}>SORT BY</span>
+        <div className={panelClasses.sortPanel}>
+            <span className={panelClasses.textStyle}>SORT BY</span>
             <SortDropDown selected={selectedOption} onSortOptionChange={onSortOptionChange} sortOptions={SORT_OPTIONS}/>
-            <div className={mainBlockClasses.expandButtonContainer}>
+            <div className={panelClasses.expandButtonContainer}>
                 <ExpandButton onExpandButtonClick={() => {
                 }}/>
             </div>

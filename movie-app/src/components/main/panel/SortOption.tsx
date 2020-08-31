@@ -1,16 +1,16 @@
 import React from "react";
-import {useMainBlockStyles} from "./mainBlockStyles";
+import {usePanelStyles} from "./panelStyles";
 
 interface SortOptionProps {
     sortOption: string
 }
 
 function SortOption(props: SortOptionProps) {
-    const mainBlockClasses = useMainBlockStyles();
+    const panelClasses = usePanelStyles();
 
     return (
         <>
-            <button className={mainBlockClasses.sortOption}>{props.sortOption}</button>
+            <button className={panelClasses.sortOption}>{props.sortOption}</button>
         </>
     )
 }

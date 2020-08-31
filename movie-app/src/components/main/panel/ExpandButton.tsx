@@ -1,16 +1,16 @@
 import React from "react";
-import {useMainBlockStyles} from "./mainBlockStyles";
+import {usePanelStyles} from "./panelStyles";
 
 interface ExpandButtonProps {
     onExpandButtonClick();
 }
 
 function ExpandButton(props: ExpandButtonProps) {
-    const mainBlockClasses = useMainBlockStyles();
+    const panelClasses = usePanelStyles();
 
     return (
         <>
-            <button className={mainBlockClasses.expandButton}/>
+            <button className={panelClasses.expandButton}/>
         </>
     );
 }

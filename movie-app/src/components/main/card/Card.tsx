@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import CardMenu from "./CardMenu";
 import CardDetails from "./CardDetails";
+import {cardStyles} from "./cardStyles";
 
 interface CardProps {
     movieTitle: string;
@@ -10,13 +11,23 @@ interface CardProps {
 }
 
 function Card(props: CardProps) {
+    const cardClasses = cardStyles();
+    let [menuActive, setMenuActive] = useState(false)
+
     return (
-        <>
-            <CardMenu onCardMenuClick={() => {
+        <div className={cardClasses.cardContainer}
+             onMouseEnter={handleMouseHover}
+             onMouseLeave={handleMouseHover}
+        >
+            <CardMenu isActive={menuActive} onCardMenuClick={() => {
             }}/>
             <CardDetails {...props}/>
-        </>
+        </div>
     );
+
+    function handleMouseHover() {
+        setMenuActive(!menuActive);
+    }
 }
 
 export default Card;

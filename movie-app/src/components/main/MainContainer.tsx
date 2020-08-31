@@ -1,5 +1,5 @@
 import React from "react";
-import FilterBar from "./FilterBar";
+import FilterBar from "./panel/FilterBar";
 import SearchResult from "./SearchResult";
 import GalleryContainer from "./GalleryContainer";
 import {useMainBlockStyles} from "./mainBlockStyles";
@@ -12,21 +12,49 @@ function MainContainer() {
 
     function retrieveMovies(): MovieInfo[] {
         return [{
+            id: '1',
             movieTitle: 'Pulp Fiction',
             description: "Action and Adventure",
             year: 2004,
             backgroundImage: ''
-        }];
+        },
+            {
+                id: '2',
+                movieTitle: 'Pulp Fiction',
+                description: "Action and Adventure",
+                year: 2004,
+                backgroundImage: ''
+            },
+            {
+                id: '3',
+                movieTitle: 'Pulp Fiction',
+                description: "Action and Adventure",
+                year: 2004,
+                backgroundImage: ''
+            },
+            {
+                id: '4',
+                movieTitle: 'Pulp Fiction',
+                description: "Action and Adventure",
+                year: 2004,
+                backgroundImage: ''
+            }];
     }
 
     const movies = retrieveMovies();
     return (
         <div className={mainBlockClasses.mainBlock}>
-            <FilterBar/>
-            <GalleryErrorBoundary>
-                <SearchResult moviesAmount={movies.length}/>
-            </GalleryErrorBoundary>
-            <GalleryContainer movies={movies}/>
+            <div className={mainBlockClasses.mainBlockContainer}>
+                <FilterBar/>
+                <GalleryErrorBoundary>
+                    <div className={mainBlockClasses.searchResultContainer}>
+                        <SearchResult moviesAmount={movies.length}/>
+                    </div>
+                    <GalleryContainer movies={movies}/>
+                </GalleryErrorBoundary>
+
+            </div>
+
         </div>
     );
 }
