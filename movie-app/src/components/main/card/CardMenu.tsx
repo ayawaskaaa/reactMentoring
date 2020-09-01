@@ -1,6 +1,7 @@
 import React from "react";
 import {cardStyles} from "./cardStyles";
 import Dot from "./Dot";
+import PropTypes from "prop-types";
 
 interface CardMenuProps {
     isActive: boolean,
@@ -25,4 +26,8 @@ function CardMenu(props: CardMenuProps) {
     );
 }
 
+CardMenu.propTypes = {
+    isActive: PropTypes.bool,
+    onCardMenuClick: PropTypes.func,
+};
 export default CardMenu;

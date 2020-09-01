@@ -1,5 +1,6 @@
 import React from "react";
 import {usePanelStyles} from "./panelStyles";
+import PropTypes from "prop-types";
 
 interface SortOptionProps {
     sortOption: string
@@ -15,4 +16,7 @@ function SortOption(props: SortOptionProps) {
     )
 }
 
+SortOption.propTypes = {
+    sortOption: PropTypes.string,
+};
 export default SortOption;

@@ -1,5 +1,6 @@
 import React from "react";
 import {useMainBlockStyles} from "./mainBlockStyles";
+import PropTypes from "prop-types";
 
 interface SearchResultProps {
     moviesAmount: number
@@ -16,4 +17,10 @@ function SearchResult(props: SearchResultProps) {
     );
 }
 
+SearchResult.propTypes = {
+    moviesAmount: PropTypes.number
+};
+SearchResult.defaultProps = {
+    moviesAmount: 0
+};
 export default SearchResult;

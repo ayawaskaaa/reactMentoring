@@ -2,12 +2,13 @@ import React, {useState} from "react";
 import CardMenu from "./CardMenu";
 import CardDetails from "./CardDetails";
 import {cardStyles} from "./cardStyles";
+import PropTypes from "prop-types";
 
 interface CardProps {
     movieTitle: string;
     description: string;
     year: number;
-    backgroundImage: any;
+    backgroundImage: string;
 }
 
 function Card(props: CardProps) {
@@ -30,4 +31,10 @@ function Card(props: CardProps) {
     }
 }
 
+Card.propTypes = {
+    movieTitle: PropTypes.string,
+    description: PropTypes.string,
+    year: PropTypes.number,
+    backgroundImage: PropTypes.string
+};
 export default Card;

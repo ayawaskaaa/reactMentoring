@@ -1,5 +1,6 @@
 import React from "react";
 import {useHeaderStyles} from "./headerStyles";
+import PropTypes from 'prop-types';
 
 interface AddMovieButtonProps {
     onAddButtonClick(): void
@@ -14,5 +15,9 @@ function AddMovieButton(props: AddMovieButtonProps) {
         </>
     );
 }
+
+AddMovieButton.propTypes = {
+    onAddButtonClick: PropTypes.func
+};
 
 export default AddMovieButton;

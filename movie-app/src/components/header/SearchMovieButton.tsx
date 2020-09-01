@@ -1,5 +1,6 @@
 import React from "react";
 import {useHeaderStyles} from "./headerStyles";
+import PropTypes from "prop-types";
 
 interface SearchMovieButtonProps {
     onSearchButtonClick(): void
@@ -15,4 +16,7 @@ function SearchMovieButton(props: SearchMovieButtonProps) {
     );
 }
 
+SearchMovieButton.propTypes = {
+    onSearchButtonClick: PropTypes.func
+};
 export default SearchMovieButton;

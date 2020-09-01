@@ -1,9 +1,10 @@
 import React from "react";
 import SortOption from "./SortOption";
 import {usePanelStyles} from "./panelStyles";
+import PropTypes, {string} from "prop-types";
 
 interface SortDropDownProps {
-    sortOptions: any,
+    sortOptions: string[],
     selected: string
 
     onSortOptionChange(): void
@@ -21,4 +22,9 @@ function SortDropDown(props: SortDropDownProps) {
     )
 }
 
+SortDropDown.propTypes = {
+    sortOptions: PropTypes.arrayOf(string),
+    selected: PropTypes.string,
+    onSortOptionChange: PropTypes.func
+};
 export default SortDropDown;

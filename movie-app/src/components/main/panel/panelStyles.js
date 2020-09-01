@@ -15,8 +15,8 @@ export const usePanelStyles = createUseStyles({
         fontFamily: 'Verdana, Arial, Helvetica, sans-serif',
         color: 'white'
     },
-    activeCategory:{
-        borderBottom:'3px solid red'
+    activeCategory: {
+        borderBottom: '3px solid red'
     },
     categoryContainer: {
         width: '500px',

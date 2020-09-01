@@ -2,6 +2,7 @@ import React from "react";
 import SortDropDown from "./SortDropDown";
 import ExpandButton from "./ExpandButton";
 import {usePanelStyles} from "./panelStyles";
+import PropTypes from "prop-types";
 
 interface SortPanelProps {
     onSortOptionChange(): void;
@@ -28,4 +29,7 @@ function SortPanel(props: SortPanelProps) {
     );
 }
 
+SortPanel.propTypes = {
+    onSortOptionChange: PropTypes.func,
+};
 export default SortPanel;

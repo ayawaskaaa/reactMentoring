@@ -1,5 +1,6 @@
 import React from "react";
 import {cardStyles} from "./cardStyles";
+import PropTypes from "prop-types";
 
 interface CardDetailsProps {
     movieTitle: string;
@@ -23,4 +24,9 @@ function CardDetails(props: CardDetailsProps) {
     );
 }
 
+CardDetails.propTypes = {
+    movieTitle: PropTypes.string,
+    description: PropTypes.string,
+    year: PropTypes.number,
+};
 export default CardDetails;
