@@ -26,3 +26,6 @@ module.exports = {
         })
     ]
 };
+    ],
+    devtool: process.env.development ? 'eval-cheap-module-source-map' : 'source-map',
+};
