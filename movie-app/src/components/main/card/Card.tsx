@@ -3,38 +3,84 @@ import CardMenu from "./CardMenu";
 import CardDetails from "./CardDetails";
 import {cardStyles} from "./cardStyles";
 import PropTypes from "prop-types";
+import {MovieInfo} from "../index";
+import EditMovieModal from "../../modal/EditMovieModal";
+import DeleteMovieModal from "../../modal/DeleteMovieModal";
 
 interface CardProps {
-    movieTitle: string;
-    description: string;
-    year: number;
-    backgroundImage: string;
+    editMovie(movie: MovieInfo)
+
+    deleteMovie(id: string);
+
+    movie: MovieInfo
 }
 
-function Card(props: CardProps) {
+function Card({editMovie, deleteMovie, movie}: CardProps) {
+
     const cardClasses = cardStyles();
     let [menuActive, setMenuActive] = useState(false)
+    let [showPopUp, setShowPopUp] = useState(false)
+    let [showEdit, setShowEdit] = useState(false)
+    let [showDelete, setShowDelete] = useState(false)
 
     return (
         <div className={cardClasses.cardContainer}
-             onMouseEnter={handleMouseHover}
-             onMouseLeave={handleMouseHover}
+             onMouseEnter={handleMouseEnter}
+             onMouseLeave={handleMouseLeave}
         >
-            <CardMenu isActive={menuActive} onCardMenuClick={() => {
+
+            <EditMovieModal
+                movie={movie}
+                show={showEdit}
+                onModalClose={e => {
+                    e.stopPropagation()
+                    setShowEdit(false);
+                }}
+                onSubmit={editMovie}
+            />
+            <DeleteMovieModal
+                show={showDelete}
+                movie={movie}
+                onModalClose={
+                    e => {
+                        e.stopPropagation()
+                        setShowDelete(false);
+                    }
+                }
+                onConfirm={deleteMovie}
+            />
+            <CardMenu
+                onDeleteClick={e => {
+                    e.stopPropagation()
+                    setShowDelete(true);
+                }}
+                onEditClick={e => {
+                    e.stopPropagation()
+                    setShowEdit(true);
+                }}
+                showPopUp={showPopUp}
+                onPopUpClose={e => {
+                    e.preventDefault();
+                    setShowPopUp(false);
+
+                }} isActive={menuActive && !showPopUp} onCardMenuClick={() => {
+                setShowPopUp(true);
             }}/>
-            <CardDetails {...props}/>
+
+
+            <CardDetails {...movie}/>
         </div>
     );
 
-    function handleMouseHover() {
-        setMenuActive(!menuActive);
+    function handleMouseEnter() {
+        setMenuActive(true);
+    }
+    function handleMouseLeave() {
+        setMenuActive(false);
     }
 }
 
 Card.propTypes = {
-    movieTitle: PropTypes.string,
-    description: PropTypes.string,
-    year: PropTypes.number,
-    backgroundImage: PropTypes.string
+    movie: PropTypes.object
 };
 export default Card;
