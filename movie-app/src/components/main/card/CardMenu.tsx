@@ -3,6 +3,7 @@ import {cardStyles} from "./cardStyles";
 import Dot from "./Dot";
 import PropTypes from "prop-types";
 import CardActionPopUp from "./CardActionPopUp";
+import {MovieInfo} from "../index";
 
 interface CardMenuProps {
     isActive: boolean,
@@ -15,13 +16,19 @@ interface CardMenuProps {
     onCardMenuClick(e): void
 
     onEditClick(e): void
+
+    onMovieSelect(e, movie: MovieInfo): void
+
+    movie: MovieInfo;
 }
 
 function CardMenu(props: CardMenuProps) {
     const cardClasses = cardStyles();
 
     return (
-        <div className={cardClasses.cardImage}>
+        <button onClick={(e) => {
+            props.onMovieSelect(e, props.movie)
+        }} className={cardClasses.cardImage}>
             {props.isActive ?
                 (<div className={cardClasses.menuButtonContainer}>
                     <button onClick={props.onCardMenuClick}
@@ -40,7 +47,7 @@ function CardMenu(props: CardMenuProps) {
                         onClose={props.onPopUpClose}
                     />) : ''}
             </div>
-        </div>
+        </button>
     );
 }
 

@@ -8,14 +8,16 @@ import EditMovieModal from "../../modal/EditMovieModal";
 import DeleteMovieModal from "../../modal/DeleteMovieModal";
 
 interface CardProps {
-    editMovie(movie: MovieInfo)
+    editMovie(e, movie: MovieInfo)
 
-    deleteMovie(id: string);
+    deleteMovie(e, id: string);
+
+    onMovieSelect(e, movie: MovieInfo): void
 
     movie: MovieInfo
 }
 
-function Card({editMovie, deleteMovie, movie}: CardProps) {
+function Card({editMovie, deleteMovie, onMovieSelect, movie}: CardProps) {
 
     const cardClasses = cardStyles();
     let [menuActive, setMenuActive] = useState(false)
@@ -36,7 +38,9 @@ function Card({editMovie, deleteMovie, movie}: CardProps) {
                     e.stopPropagation()
                     setShowEdit(false);
                 }}
-                onSubmit={editMovie}
+                onSubmit={(e) => {
+                    editMovie(e, movie)
+                }}
             />
             <DeleteMovieModal
                 show={showDelete}
@@ -47,9 +51,16 @@ function Card({editMovie, deleteMovie, movie}: CardProps) {
                         setShowDelete(false);
                     }
                 }
-                onConfirm={deleteMovie}
+                onConfirm={(e) => {
+                    const id = movie.id;
+                    if (id) {
+                        deleteMovie(e, id)
+                    }
+                }}
             />
             <CardMenu
+                movie={movie}
+                onMovieSelect={onMovieSelect}
                 onDeleteClick={e => {
                     e.stopPropagation()
                     setShowDelete(true);
@@ -75,6 +86,7 @@ function Card({editMovie, deleteMovie, movie}: CardProps) {
     function handleMouseEnter() {
         setMenuActive(true);
     }
+
     function handleMouseLeave() {
         setMenuActive(false);
     }

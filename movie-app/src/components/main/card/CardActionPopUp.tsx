@@ -1,8 +1,9 @@
-import React, {RefObject, useEffect, useRef} from "react";
+import React, {RefObject, useRef} from "react";
 
 import {cardStyles} from "./cardStyles";
 import CloseButton from "../../common/CloseButton";
 import PropTypes from "prop-types";
+import {useOnClickAway} from "../../../util/hooks/lifeCycleHooks";
 
 interface CardActionPopUpProps {
     onClose(e);
@@ -17,18 +18,15 @@ function CardActionPopUp(props: CardActionPopUpProps) {
     const cardClasses = cardStyles();
     let selfRef: RefObject<any> = useRef();
     const handleClick = e => {
+
         if (selfRef?.current?.contains(e.target)) {
             return;
         }
         props.onClose(e);
     };
+    useOnClickAway(handleClick)
 
-    useEffect(() => {
-        document.addEventListener("mousedown", handleClick);
-        return () => {
-            document.removeEventListener("mousedown", handleClick);
-        };
-    }, []);
+
     return (
         <div ref={selfRef} className={cardClasses.cardActionPopUpContainer}>
             <div className={cardClasses.closeButtonContainer}>
