@@ -5,6 +5,10 @@ import {useMainBlockStyles} from "./mainBlockStyles";
 import PropTypes from "prop-types";
 
 interface GalleryContainerProps {
+    editMovie(movie: MovieInfo);
+
+    deleteMovie(id: string);
+
     movies: MovieInfo[];
 }
 
@@ -13,7 +17,12 @@ function GalleryContainer(props: GalleryContainerProps) {
     return (
         <div className={mainBlockClasses.galleryContainer}>
             {props.movies.map((movieInfo: MovieInfo) =>
-                (<Card key={movieInfo.id} {...movieInfo}/>)
+                (<Card
+                    key={movieInfo.id}
+                    editMovie={props.editMovie}
+                    deleteMovie={props.deleteMovie}
+                    movie={movieInfo}
+                />)
             )}
         </div>
     );

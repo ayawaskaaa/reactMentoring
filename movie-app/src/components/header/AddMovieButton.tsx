@@ -3,7 +3,7 @@ import {useHeaderStyles} from "./headerStyles";
 import PropTypes from 'prop-types';
 
 interface AddMovieButtonProps {
-    onAddButtonClick(): void
+    onAddButtonClick(e): void
 }
 
 function AddMovieButton(props: AddMovieButtonProps) {
@@ -11,7 +11,9 @@ function AddMovieButton(props: AddMovieButtonProps) {
 
     return (
         <>
-            <button className={headerClasses.addMovieButton}>+ ADD MOVIE</button>
+            <button onClick={event => props.onAddButtonClick(event)} className={headerClasses.addMovieButton}>+ ADD
+                MOVIE
+            </button>
         </>
     );
 }

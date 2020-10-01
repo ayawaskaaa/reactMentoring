@@ -3,22 +3,22 @@ import {cardStyles} from "./cardStyles";
 import PropTypes from "prop-types";
 
 interface CardDetailsProps {
-    movieTitle: string;
+    title: string;
     description: string;
     year: number;
 }
 
-function CardDetails(props: CardDetailsProps) {
+function CardDetails({year, description, title}: CardDetailsProps) {
     const cardClasses = cardStyles();
 
     return (
         <>
             <div className={cardClasses.cardDetailsContainer}>
                 <div className={cardClasses.cardDetailsContent}>
-                    <span>{props.movieTitle}</span>
-                    <span className={cardClasses.movieDescription}>{props.description}</span>
+                    <span>{title}</span>
+                    <span className={cardClasses.movieDescription}>{description}</span>
                 </div>
-                <div className={cardClasses.movieYearContainer}>{props.year}</div>
+                <div className={cardClasses.movieYearContainer}>{year}</div>
             </div>
         </>
     );
@@ -29,4 +29,9 @@ CardDetails.propTypes = {
     description: PropTypes.string,
     year: PropTypes.number,
 };
+CardDetails.defaultProps = {
+    title: '',
+    description: '',
+    year: ''
+}
 export default CardDetails;

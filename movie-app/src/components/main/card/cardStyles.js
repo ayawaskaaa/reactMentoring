@@ -19,7 +19,7 @@ export const cardStyles = createUseStyles({
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        marginBottom: '40px'
+        marginBottom: '40px',
     },
     cardDetailsContainer: {
         display: "flex",
@@ -59,7 +59,6 @@ export const cardStyles = createUseStyles({
         justifyContent: "center"
     },
     activeMenuButton: {
-        //position: "relative",
         width: '45px',
         height: '45px',
         borderRadius: " 50%",
@@ -82,5 +81,48 @@ export const cardStyles = createUseStyles({
         borderRadius: " 50%",
         backgroundColor: "white",
         margin: '3px'
+    },
+    popUpContainer: {
+        width: '240px',
+        height: '150px',
+        display: 'flex',
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    cardActionPopUpContainer: {
+        width: '220px',
+        height: '125px',
+        backgroundColor: '#232323',
+        display: 'flex',
+        flexDirection: "column",
+        borderRadius: 4
+    },
+    popUpButton: {
+        width: '100%',
+        height: '25px',
+        border: 'none',
+        padding: '20px',
+        cursor: 'pointer',
+        outline: 'none',
+        fontSize: '16px',
+        fontWeight: '200',
+        fontFamily: 'Verdana, Arial, Helvetica, sans-serif',
+        color: "white",
+        backgroundColor: '#232323',
+        display: "flex",
+        alignItems: "center",
+
+        justifyContent: "flex-start",
+        "&:hover": {
+            backgroundColor: '#F65261',
+        }
+    },
+    closeButtonContainer: {
+        alignSelf: "flex-end",
+        width: '30px',
+        height: '30px',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
     }
 });

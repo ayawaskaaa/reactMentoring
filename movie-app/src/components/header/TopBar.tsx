@@ -3,7 +3,11 @@ import AddMovieButton from "./AddMovieButton";
 import {useHeaderStyles} from "./headerStyles";
 import LogoText from "../common/LogoText";
 
-function TopBar() {
+interface TopBarProps {
+    onAddButtonClick(e);
+}
+
+function TopBar(props: TopBarProps) {
     const headerClasses = useHeaderStyles();
 
     return (
@@ -12,8 +16,7 @@ function TopBar() {
                 <LogoText/>
             </div>
             <div className={headerClasses.topBarRight}>
-                <AddMovieButton onAddButtonClick={() => {
-                }}/>
+                <AddMovieButton onAddButtonClick={props.onAddButtonClick}/>
             </div>
         </div>
     );
