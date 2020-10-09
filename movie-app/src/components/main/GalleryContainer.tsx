@@ -5,9 +5,12 @@ import {useMainBlockStyles} from "./mainBlockStyles";
 import PropTypes from "prop-types";
 
 interface GalleryContainerProps {
-    editMovie(movie: MovieInfo);
+    editMovie(e, movie: MovieInfo)
 
-    deleteMovie(id: string);
+
+    deleteMovie(e, id: string);
+
+    onMovieSelect(e, movie: MovieInfo): void
 
     movies: MovieInfo[];
 }
@@ -18,6 +21,7 @@ function GalleryContainer(props: GalleryContainerProps) {
         <div className={mainBlockClasses.galleryContainer}>
             {props.movies.map((movieInfo: MovieInfo) =>
                 (<Card
+                    onMovieSelect={props.onMovieSelect}
                     key={movieInfo.id}
                     editMovie={props.editMovie}
                     deleteMovie={props.deleteMovie}

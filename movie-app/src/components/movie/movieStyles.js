@@ -76,5 +76,5 @@ export const useMovieStyles = createUseStyles({
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
-    }
+    },
 });

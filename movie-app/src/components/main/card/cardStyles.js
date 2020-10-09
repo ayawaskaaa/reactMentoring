@@ -11,7 +11,9 @@ export const cardStyles = createUseStyles({
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         display: "flex",
-        flexDirection: "row-reverse"
+        flexDirection: "row-reverse",
+        background: 'none',
+        cursor: 'pointer',
     },
     cardContainer: {
         width: '325px',
@@ -56,7 +58,8 @@ export const cardStyles = createUseStyles({
         height: '70px',
         display: "flex",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+
     },
     activeMenuButton: {
         width: '45px',
@@ -70,7 +73,9 @@ export const cardStyles = createUseStyles({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        zIndex: 5,
+        position: 'absolute'
     },
     inactiveMenuButton: {
         display: "none"

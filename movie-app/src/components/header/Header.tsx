@@ -4,12 +4,17 @@ import {useHeaderStyles} from "./headerStyles";
 import SearchMovieContainer from "./SearchMovieContainer";
 import AddMovieModal from "../modal/AddMovieModal";
 import {MovieInfo} from "../main";
+import {MovieDetails} from "../movie/MovieDetails";
 
 interface HeaderProps {
     onAddMovie(movie: MovieInfo)
+
+    activeMovie: MovieInfo | null
+
+    onSearchClick(e);
 }
 
-function Header(props: HeaderProps) {
+function Header({activeMovie, onAddMovie, onSearchClick}: HeaderProps) {
     const [addMovieModalShow, setAddMovieModalShow] = React.useState(false);
 
     function handleClose(e) {
@@ -18,7 +23,9 @@ function Header(props: HeaderProps) {
     }
 
     const headerClasses = useHeaderStyles();
-    return (
+    if (activeMovie) {
+        return <MovieDetails movie={activeMovie} onSearchClick={onSearchClick}/>
+    } else return (
         <div className={headerClasses.header}>
             <TopBar onAddButtonClick={
                 (e) => {
@@ -26,8 +33,9 @@ function Header(props: HeaderProps) {
                     setAddMovieModalShow(true);
                 }}/>
             <SearchMovieContainer/>
-            <AddMovieModal show={addMovieModalShow} onModalClose={handleClose}/>
+            <AddMovieModal addMovie={onAddMovie} show={addMovieModalShow} onModalClose={handleClose}/>
         </div>
+
     );
 }
 

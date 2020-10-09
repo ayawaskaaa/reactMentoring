@@ -7,14 +7,16 @@ import GalleryErrorBoundary from "./GalleryErrorBoundary";
 import {MovieInfo} from "./index";
 
 interface MainContainerProps {
-    editMovie(movie: MovieInfo);
+    editMovie(e, movie: MovieInfo)
 
-    deleteMovie(id: string);
+    deleteMovie(e, id: string);
+
+    onMovieSelect(e, movie: MovieInfo): void
 
     movies: MovieInfo[]
 }
 
-function MainContainer({movies, editMovie, deleteMovie}: MainContainerProps) {
+function MainContainer({movies, editMovie, deleteMovie, onMovieSelect}: MainContainerProps) {
     const mainBlockClasses = useMainBlockStyles();
 
 
@@ -27,6 +29,7 @@ function MainContainer({movies, editMovie, deleteMovie}: MainContainerProps) {
                         <SearchResult moviesAmount={movies.length}/>
                     </div>
                     <GalleryContainer
+                        onMovieSelect={onMovieSelect}
                         movies={movies}
                         editMovie={editMovie}
                         deleteMovie={deleteMovie}

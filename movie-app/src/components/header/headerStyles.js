@@ -14,7 +14,6 @@ export const useHeaderStyles = createUseStyles({
         display: 'flex',
         flexDirection: "column",
         alignItems: "center",
-        // filter: 'brightness(0.5)',
     },
     topBar: {
         width: '100%',
