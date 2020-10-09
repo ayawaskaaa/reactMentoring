@@ -43,7 +43,7 @@ function DeleteMovieModal({show, movie, onModalClose, onConfirm}: DeleteMovieMod
             <div className={classes.deleteModalContent}>
                 <span className={classes.deleteModalTitle}>DELETE MOVIE</span>
                 <span className={classes.deleteModalText}>Are you sure you want to delete this movie?</span>
-                <Button onClick={onConfirm} text={'CONFIRM'}
+                <Button type={"button"} onClick={onConfirm} text={'CONFIRM'}
                         classes={`${buttonClasses.submitButton} ${classes.confirmButton}`}/>
             </div>
         </div>) :

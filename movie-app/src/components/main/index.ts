@@ -1,15 +1,16 @@
 export interface MovieInfo {
     id?: string;
     title?: string;
-    subtitle?: string;
-    releaseDate?: string;
-    movieUrl?: string;
-    genre?: string;
+    tagline?: string;
+    release_date?: string;
     overview?: string;
-    runtime?: string;
-    description?: string;
+    runtime?: number;
     year?: number;
-    backgroundImage?: string;
+    poster_path?: string;
     duration?: string;
-    rate?: string;
+    vote_average?: number;
+    vote_count?: number;
+    budget?: number;
+    revenue?: number;
+    genres?: string[];
 }

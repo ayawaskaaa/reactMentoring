@@ -7,7 +7,7 @@ import {MovieInfo} from "../main";
 import {MovieDetails} from "../movie/MovieDetails";
 
 interface HeaderProps {
-    onAddMovie(movie: MovieInfo)
+    onAddMovie(e, movie)
 
     activeMovie: MovieInfo | null
 
