@@ -2,12 +2,11 @@ import React, {RefObject, useEffect, useRef} from 'react';
 import {useModalStyles} from "./modalStyles";
 import MovieForm from "../movie/MovieForm";
 import PropTypes from "prop-types";
-import {MovieInfo} from "../main";
 
 interface AddMovieModalProps {
     show: boolean
 
-    addMovie(movie: MovieInfo)
+    addMovie(e, movie)
 
     onModalClose(e);
 }

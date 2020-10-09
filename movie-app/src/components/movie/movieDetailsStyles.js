@@ -91,7 +91,7 @@ export const useMovieDetailsStyles = createUseStyles({
         alignItems: "center"
     },
     contentMeta: {},
-    description: {
+    overview: {
         fontSize: '18px',
     }
 });

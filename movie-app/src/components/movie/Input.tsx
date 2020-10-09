@@ -4,17 +4,20 @@ import PropTypes from "prop-types";
 
 interface InputProps {
     inputTitle: string;
-    inputValue: string | undefined;
+    inputValue: string | undefined | number;
     placeHolder: string;
+
+    onChange(e);
 }
 
-function Input({inputTitle, inputValue, placeHolder}: InputProps) {
+function Input({inputTitle, inputValue, placeHolder, onChange}: InputProps) {
     const classes = useMovieStyles();
 
     return (
         <div className={classes.inputContainer}>
             <span className={classes.inputTitle}>{inputTitle}</span>
-            <input className={classes.input} placeholder={placeHolder} defaultValue={inputValue}></input>
+            <input className={classes.input} placeholder={placeHolder} defaultValue={inputValue}
+                   onChange={onChange}></input>
         </div>
     )
 }
