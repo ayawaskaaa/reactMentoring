@@ -29,15 +29,15 @@ export function MovieDetails({movie, onSearchClick}: MovieDetailsProps) {
                     <div className={classes.headerContainer}>
                         <span className={classes.contentHeader}>{movie.title}</span>
                         <div className={classes.rateContainer}>
-                            <span className={classes.rate}>{movie.rate}</span>
+                            <span className={classes.rate}>{movie.vote_average}</span>
                         </div>
                     </div>
-                    <span className={classes.contentSubHeader}>{movie.subtitle}</span>
+                    <span className={classes.contentSubHeader}>{movie.tagline}</span>
                     <div className={classes.contentMetaContainer}>
                         <span>{movie.year}</span>
                         <span>{movie.duration}{' '}min</span>
                     </div>
-                    <p className={classes.description}>
+                    <p className={classes.overview}>
                         The title refers to the pulp magazines and hardboiled crime novels
                         popular during the mid-20th century, known for their
                         graphic violence and punchy dialogue.
