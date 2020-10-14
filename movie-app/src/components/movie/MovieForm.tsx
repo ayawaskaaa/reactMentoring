@@ -6,6 +6,7 @@ import Input from "./Input";
 import Button from "../common/Button";
 import CloseButton from "../common/CloseButton";
 import {MovieInfo} from "../main";
+import {useFormik} from "formik";
 
 interface MovieFormProps {
     movie: MovieInfo
@@ -13,7 +14,7 @@ interface MovieFormProps {
 
     onClose(e);
 
-    onSubmit(e, movie);
+    onSubmit(movie);
 }
 
 enum InputConstants {
@@ -37,10 +38,50 @@ function MovieForm({movie, onClose, formName, onSubmit}: MovieFormProps) {
     const classes = useMovieStyles();
     const buttonClasses = buttonStyles();
     const [movieState, setMovie] = useState(movie)
+    const validate = values => {
+        const errors = {
+            title: '',
+            release_date: '',
+            poster_path: '',
+            overview: '',
+            runtime: ''
+        };
+        if (!values.title) {
+            errors.title = 'Required';
+        } else if (values.title.length > 20) {
+            errors.title = 'Must be 15 characters or less';
+        } else if (values.title.length < 3) {
+            errors.title = 'Must be 3 characters or more';
+        } else if (!values.release_date) {
+            errors.release_date = 'Required';
+        } else if (!values.poster_path) {
+            errors.poster_path = 'Required';
+        } else if (!values.overview) {
+            errors.overview = 'Required';
+        } else if (!values.runtime) {
+            errors.overview = 'Required';
+        }
 
+        return errors;
+    };
+    const formik = useFormik({
+        initialValues: {
+            id: movieState.id || '',
+            title: movieState.title,
+            release_date: movieState.release_date,
+            poster_path: movieState.poster_path,
+            overview: movieState.overview,
+            runtime: movieState.runtime,
+        },
+        validate,
+        onSubmit: values => {
+            console.log(values)
+            onSubmit({...values});
+        },
+    });
     return (
         <div className={classes.root}>
-            <form id={'myForm'} className={classes.formContainer}>
+            <form onSubmit={formik.handleSubmit} className={classes.formContainer}>
                 <div className={classes.header}>
                     <div className={classes.closeButtonContainer}>
                         <CloseButton onClose={event => onClose(event)} size={'25px'}/>
@@ -52,47 +93,47 @@ function MovieForm({movie, onClose, formName, onSubmit}: MovieFormProps) {
                     </div>
                     {
                         movie.id ? (
-                            <Input onChange={(event) => {
-                            }} placeHolder={''} inputTitle={InputConstants.MOVIE_ID} inputValue={movie.id}/>) : ''}
-                    <Input inputTitle={InputConstants.TITLE} placeHolder={InputConstants.TITLE_DEFAULT}
-                           inputValue={movieState.title} onChange={(event) => {
-                        movieState.title = event.target.value
-                        console.log('input change ', movieState.title)
-                    }}/>
-                    <Input inputTitle={InputConstants.RELEASE_DATE}
-                           placeHolder={InputConstants.RELEASE_DATE_DEFAULT} inputValue={movieState.release_date}
-                           onChange={(event) => {
-                               movieState.release_date = event.target.value
-                           }}/>
-                    <Input inputTitle={InputConstants.MOVIE_URL} placeHolder={InputConstants.MOVIE_URL_DEFAULT}
-                           inputValue={movieState.poster_path}
-                           onChange={(event) => {
-                               movieState.poster_path = event.target.value
-                           }}/>
-                    <Input inputTitle={InputConstants.GENRE} placeHolder={InputConstants.GENRE_DEFAULT}
-                           inputValue={''}
-                           onChange={(event) => {
+                            <Input type={'text'} formik={formik} name={'id'}
+                                   placeHolder={''} inputTitle={InputConstants.MOVIE_ID}
+                                   errorMessage={''}
+                            />) : ''}
+                    <Input type={'text'} formik={formik} name={'title'}
+                           inputTitle={InputConstants.TITLE} placeHolder={InputConstants.TITLE_DEFAULT}
+                           errorMessage={formik.errors.title}
+                    />
+                    <Input type={'text'} formik={formik} name={'release_date'}
+                           inputTitle={InputConstants.RELEASE_DATE}
+                           placeHolder={InputConstants.RELEASE_DATE_DEFAULT}
+                           errorMessage={formik.errors.release_date}
 
-                           }}/>
-                    <Input inputTitle={InputConstants.OVERVIEW} placeHolder={InputConstants.OVERVIEW_DEFAULT}
-                           inputValue={movieState.overview}
-                           onChange={(event) => {
-                               movieState.overview = event.target.value
-                           }}/>
-                    <Input inputTitle={InputConstants.RUNTIME} placeHolder={InputConstants.RUNTIME_DEFAULT}
-                           inputValue={movieState.runtime}
-                           onChange={(event) => {
-                               movieState.runtime = event.target.value
-                           }}/>
+                    />
+                    <Input type={'text'} formik={formik} name={'poster_path'}
+                           inputTitle={InputConstants.MOVIE_URL} placeHolder={InputConstants.MOVIE_URL_DEFAULT}
+                           errorMessage={formik.errors.poster_path}
+
+
+                    />
+                    <Input type={'text'} formik={formik} name={'genre'}
+                           inputTitle={InputConstants.GENRE} placeHolder={InputConstants.GENRE_DEFAULT}
+                           errorMessage={''}
+
+                    />
+                    <Input type={'text'} formik={formik} name={'overview'}
+                           inputTitle={InputConstants.OVERVIEW} placeHolder={InputConstants.OVERVIEW_DEFAULT}
+                           errorMessage={formik.errors.overview}
+
+                    />
+                    <Input type={'text'} formik={formik} name={'runtime'}
+                           inputTitle={InputConstants.RUNTIME} placeHolder={InputConstants.RUNTIME_DEFAULT}
+                           errorMessage={formik.errors.runtime}
+                    />
                 </div>
                 <div className={classes.formFooter}>
                     <div className={classes.buttonContainer}>
-                        <Button type={"reset"} text={'RESET'} classes={buttonClasses.resetButton} onClick={(e) => {
-                            setMovie({id: movieState.id});
+                        <Button type={"reset"} text={'RESET'} classes={buttonClasses.resetButton} onClick={() => {
                         }}/>
                         <Button type={"submit"} text={'SUBMIT'} classes={buttonClasses.submitButton}
-                                onClick={(e) => {
-                                    onSubmit(e, movie)
+                                onClick={() => {
                                 }}/>
                     </div>
                 </div>
