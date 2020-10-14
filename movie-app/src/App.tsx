@@ -20,8 +20,7 @@ function App() {
         e.preventDefault()
         dispatch(deleteMovie(id));
     }, [movies])
-    const onAddMovie = useCallback((e, movie) => {
-        e.preventDefault()
+    const onAddMovie = useCallback((movie) => {
         dispatch(addMovie(movie));
     }, [movies])
     const onEditMovie = useCallback((e, editedMovie) => {

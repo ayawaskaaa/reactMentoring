@@ -2,12 +2,12 @@ import React from 'react';
 import TopBar from "./TopBar";
 import {useHeaderStyles} from "./headerStyles";
 import SearchMovieContainer from "./SearchMovieContainer";
-import AddMovieModal from "../modal/AddMovieModal";
 import {MovieInfo} from "../main";
+import AddMovieModal from "../modal/AddMovieModal";
 import {MovieDetails} from "../movie/MovieDetails";
 
 interface HeaderProps {
-    onAddMovie(e, movie)
+    onAddMovie(movie)
 
     activeMovie: MovieInfo | null
 

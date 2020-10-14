@@ -13,7 +13,7 @@ function Button(props: ButtonProps) {
 
     return (
         <>
-            <button form={'myForm'} type={props.type} onClick={props.onClick}
+            <button type={props.type} onClick={props.onClick}
                     className={props.classes}>{props.text}</button>
         </>
     )

@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 interface AddMovieModalProps {
     show: boolean
 
-    addMovie(e, movie)
+    addMovie(movie)
 
     onModalClose(e);
 }
