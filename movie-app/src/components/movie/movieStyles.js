@@ -52,7 +52,7 @@ export const useMovieStyles = createUseStyles({
     inputContainer: {
         display: "flex",
         flexDirection: "column",
-        height: '100px',
+        height: '110px',
         justifyContent: 'space-between'
     },
     formName: {
@@ -76,5 +76,13 @@ export const useMovieStyles = createUseStyles({
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
+    },
+    errorMessage: {
+        color: '#F65261',
+        fontSize: '14px',
+        fontWeight: '100',
+        fontFamily: 'Verdana, Arial, Helvetica, sans-serif',
+        height: '15px',
+        width: '100%'
     },
 });
