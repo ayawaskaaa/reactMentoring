@@ -46,6 +46,14 @@ export const useMainBlockStyles = createUseStyles({
         flexDirection: "row",
         alignItems: "center",
         flexWrap: "wrap"
+    },
+    moviesNotFound: {
+        alignSelf: 'center',
+        marginTop: '50px',
+        fontSize: '26px',
+        fontWeight: '100',
+        fontFamily: 'Verdana, Arial, Helvetica, sans-serif',
+        color: 'white'
     }
 
 });

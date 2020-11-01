@@ -1,15 +1,16 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import Header from "./components/header/Header";
-import MainContainer from "./components/main/MainContainer";
-import Footer from "./components/footer/Footer";
-import {usePageStyles} from "./components/applicationStyles";
-import {MovieInfo} from "./components/main";
+import Header from "../header/Header";
+import MainContainer from "../main/MainContainer";
+import Footer from "../footer/Footer";
+import {usePageStyles} from "../applicationStyles";
+import {MovieInfo} from "../main";
 import {useDispatch, useSelector} from 'react-redux'
-import {addMovie, deleteMovie, editMovie, fetchMovies} from "./service/movieService"
+import {addMovie, deleteMovie, editMovie, fetchMovies} from "../../service/movieService"
+import {RouteProps} from 'react-router-dom';
 
-
-function App() {
+function App(props: RouteProps) {
     const classes = usePageStyles();
+    let searchQuery = props.location?.search;
     let [activeMovie, setActiveMovie] = useState<MovieInfo | null>(null);
     const dispatch = useDispatch()
     const movies = useSelector(state => state.movies);
@@ -43,6 +44,7 @@ function App() {
             <div>
                 <Header activeMovie={activeMovie} onAddMovie={onAddMovie} onSearchClick={handleOnSearchClick}/>
                 <MainContainer
+                    searchQuery={searchQuery}
                     onMovieSelect={onMovieSelectHandler}
                     movies={movies}
                     deleteMovie={onDeleteMovie}

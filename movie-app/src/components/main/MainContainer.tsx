@@ -5,9 +5,12 @@ import GalleryContainer from "./GalleryContainer";
 import {useMainBlockStyles} from "./mainBlockStyles";
 import GalleryErrorBoundary from "./GalleryErrorBoundary";
 import {MovieInfo} from "./index";
+import MoviesNotFound from "./MoviesNotFound";
 
 interface MainContainerProps {
     editMovie(e, movie: MovieInfo)
+
+    searchQuery: string | undefined;
 
     deleteMovie(e, id: string);
 
@@ -16,7 +19,7 @@ interface MainContainerProps {
     movies: MovieInfo[]
 }
 
-function MainContainer({movies, editMovie, deleteMovie, onMovieSelect}: MainContainerProps) {
+function MainContainer({movies, editMovie, deleteMovie, onMovieSelect, searchQuery}: MainContainerProps) {
     const mainBlockClasses = useMainBlockStyles();
 
 
@@ -25,15 +28,19 @@ function MainContainer({movies, editMovie, deleteMovie, onMovieSelect}: MainCont
             <div className={mainBlockClasses.mainBlockContainer}>
                 <FilterBar/>
                 <GalleryErrorBoundary>
-                    <div className={mainBlockClasses.searchResultContainer}>
-                        <SearchResult moviesAmount={movies.length}/>
-                    </div>
-                    <GalleryContainer
-                        onMovieSelect={onMovieSelect}
-                        movies={movies}
-                        editMovie={editMovie}
-                        deleteMovie={deleteMovie}
-                    />
+                    {searchQuery
+                        ? <>
+                            <div className={mainBlockClasses.searchResultContainer}>
+                                <SearchResult moviesAmount={movies.length}/>
+                            </div>
+                            <GalleryContainer
+                                onMovieSelect={onMovieSelect}
+                                movies={movies}
+                                editMovie={editMovie}
+                                deleteMovie={deleteMovie}
+                            /></>
+                        : <MoviesNotFound/>}
+
                 </GalleryErrorBoundary>
 
             </div>
